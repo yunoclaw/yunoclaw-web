@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/how-it-works", label: "How It Works" },
-  { href: "/demo",         label: "Try Demo" },
   { href: "/merchants",    label: "For Merchants" },
   { href: "/about",        label: "About" },
 ];
@@ -77,7 +76,7 @@ export function Navbar() {
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-2.5">
           <Button variant="ghost" size="sm" asChild>
-            <Link href="/demo">Try Demo</Link>
+            <Link href="/demo">Try Demo <span className="text-xs text-gray-400 font-normal ml-1">(mock)</span></Link>
           </Button>
           <Button variant="primary" size="sm" asChild>
             <Link href="/waitlist">Get Early Access</Link>
