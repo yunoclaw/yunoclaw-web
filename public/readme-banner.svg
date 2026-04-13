@@ -5,57 +5,62 @@
       <stop offset="50%" style="stop-color:#0f766e"/>
       <stop offset="100%" style="stop-color:#0d9488"/>
     </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:0.12"/>
-      <stop offset="100%" style="stop-color:#083d38;stop-opacity:0"/>
+    <radialGradient id="bodyG" cx="60%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </radialGradient>
+    <radialGradient id="shadowG" cx="18%" cy="55%" r="50%">
+      <stop offset="0%" stop-color="#083d38" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#083d38" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="muzzleG" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d1faf5"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#083d38" stop-opacity="0"/>
     </radialGradient>
     <clipPath id="rounded">
       <rect width="900" height="300" rx="16"/>
     </clipPath>
     <style>
-      .mascot-body {
-        transform-origin: 680px 178px;
-        animation: floatBob 3.2s ease-in-out infinite;
+      .mascot-float {
+        animation: float 3.5s ease-in-out infinite;
+        transform-origin: 690px 160px;
       }
-      @keyframes floatBob {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-8px); }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50%       { transform: translateY(-10px); }
       }
-      .arm-left {
-        transform-origin: 628px 178px;
-        animation: waveLeft 2.6s ease-in-out 0.8s infinite;
-      }
-      @keyframes waveLeft {
-        0%, 100% { transform: rotate(0deg);   }
-        30%       { transform: rotate(-22deg); }
-        60%       { transform: rotate(6deg);  }
-      }
-      .coin {
-        transform-origin: 843px 82px;
-        animation: coinPulse 2s ease-in-out 1s infinite;
+      .coin-pulse {
+        animation: coinPulse 2.2s ease-in-out 0.8s infinite;
+        transform-origin: 810px 68px;
       }
       @keyframes coinPulse {
-        0%, 100% { transform: scale(1);    }
-        50%       { transform: scale(1.18); }
+        0%, 100% { transform: scale(1); }
+        50%       { transform: scale(1.2); }
       }
       .eye-blink {
         animation: blink 4s ease-in-out 2s infinite;
+        transform-origin: center;
       }
       @keyframes blink {
-        0%, 90%, 100% { transform: scaleY(1);   }
-        95%            { transform: scaleY(0.1); }
+        0%, 88%, 100% { transform: scaleY(1); }
+        93%            { transform: scaleY(0.08); }
       }
-      .tagline {
-        animation: fadeIn 1s ease-out 0.5s both;
+      .logo-fade {
+        animation: fadeUp 0.8s ease-out 0.2s both;
       }
-      .logo-text {
-        animation: fadeIn 0.8s ease-out 0.2s both;
+      .tag-fade {
+        animation: fadeUp 0.8s ease-out 0.6s both;
       }
-      .accent-line {
-        animation: growLine 1s ease-out 0.8s both;
+      .line-grow {
+        animation: growLine 1s ease-out 1s both;
+        transform-origin: 180px 222px;
       }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(6px); }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(8px); }
         to   { opacity: 1; transform: translateY(0); }
       }
       @keyframes growLine {
@@ -69,7 +74,7 @@
     <!-- Background -->
     <rect width="900" height="300" fill="url(#bg)"/>
 
-    <!-- Subtle grid -->
+    <!-- Grid -->
     <g opacity="0.05" stroke="#ffffff" stroke-width="1">
       <line x1="0" y1="60" x2="900" y2="60"/>
       <line x1="0" y1="120" x2="900" y2="120"/>
@@ -83,9 +88,9 @@
     </g>
 
     <!-- Glow behind mascot -->
-    <ellipse cx="690" cy="180" rx="180" ry="160" fill="url(#glow)"/>
+    <ellipse cx="690" cy="170" rx="200" ry="170" fill="url(#glowR)"/>
 
-    <!-- Floating particles -->
+    <!-- Particles -->
     <circle cx="60" cy="50" r="2" fill="#5eead4" opacity="0.5">
       <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite"/>
       <animate attributeName="cy" values="50;40;50" dur="3s" repeatCount="indefinite"/>
@@ -93,104 +98,89 @@
     <circle cx="200" cy="260" r="1.5" fill="#a7f3d0" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4.5s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="520" cy="30" r="1.5" fill="#ffffff" opacity="0.3">
+    <circle cx="520" cy="28" r="1.5" fill="#ffffff" opacity="0.3">
       <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="400" cy="270" r="1" fill="#5eead4" opacity="0.4">
+    <circle cx="400" cy="272" r="1" fill="#5eead4" opacity="0.4">
       <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3.8s" repeatCount="indefinite"/>
     </circle>
 
-    <!-- ── LEFT SIDE: LOGO ── -->
+    <!-- ── LEFT: Logo ── -->
     <!-- Claw icon -->
-    <g transform="translate(60, 90) scale(3.2)">
+    <g transform="translate(60, 96) scale(3.2)">
       <path d="M16 22 C16 22 7 20 6 13 C5 7 9 4 12 5 C14 5.5 14.5 7 13.5 9 C12.5 11 12 13 13 15 C14 17 16 18 16 22 Z" fill="#ffffff"/>
       <path d="M16 22 C16 22 25 20 26 13 C27 7 23 4 20 5 C18 5.5 17.5 7 18.5 9 C19.5 11 20 13 19 15 C18 17 16 18 16 22 Z" fill="#ffffff"/>
       <path d="M11 24 C11 21.8 13.2 20 16 20 C18.8 20 21 21.8 21 24 C21 26.2 18.8 28 16 28 C13.2 28 11 26.2 11 24 Z" fill="#5eead4"/>
     </g>
-
     <!-- Wordmark -->
-    <text class="logo-text" x="180" y="168"
-      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
-      font-weight="800" font-size="56" fill="#ffffff"
-      letter-spacing="-2">YunoClaw</text>
-
+    <text class="logo-fade" x="180" y="172"
+      font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+      font-weight="800" font-size="54" fill="#ffffff" letter-spacing="-2">YunoClaw</text>
     <!-- Tagline -->
-    <text class="tagline" x="180" y="204"
-      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
-      font-weight="400" font-size="15" fill="#5eead4"
-      letter-spacing="3">AGENTIC SHOPPING ASSISTANT</text>
-
+    <text class="tag-fade" x="180" y="206"
+      font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+      font-weight="400" font-size="14" fill="#5eead4" letter-spacing="3">AGENTIC SHOPPING ASSISTANT</text>
     <!-- Accent line -->
-    <rect class="accent-line" x="180" y="218" width="320" height="2" rx="1" fill="#5eead4" opacity="0.5"
-      style="transform-origin: 180px 218px"/>
+    <rect class="line-grow" x="180" y="222" width="310" height="2" rx="1" fill="#5eead4" opacity="0.5"/>
 
     <!-- Divider -->
-    <line x1="560" y1="60" x2="560" y2="240" stroke="#ffffff" stroke-width="1" opacity="0.1"/>
+    <line x1="555" y1="50" x2="555" y2="250" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
 
-    <!-- ── RIGHT SIDE: MASCOT ── -->
+    <!-- ── RIGHT: Rabbit Mascot ── -->
     <!-- Ground shadow -->
-    <ellipse cx="690" cy="274" rx="52" ry="7" fill="#0a4a44" opacity="0.2"/>
+    <ellipse cx="690" cy="284" rx="60" ry="8" fill="#052e2a" opacity="0.3"/>
 
-    <!-- MASCOT BODY (floats) -->
-    <g class="mascot-body">
-      <!-- LEFT EAR -->
-      <path d="M680 125 C680 125 642 120 636 92 C630 66 642 48 654 52 C662 55 663 66 658 78 C653 90 652 102 656 112 C660 122 680 128 680 128 Z" fill="#0f766e"/>
-      <path d="M680 125 C680 125 650 119 645 96 C640 75 648 60 656 58 C660 57 661 64 657 75 C653 86 653 100 657 110 C661 120 680 126 680 126 Z" fill="#14b8a6" opacity="0.25"/>
+    <!-- Floating group -->
+    <g class="mascot-float">
+      <!-- Scale and center the 200x230 mascot SVG into the right side -->
+      <g transform="translate(575, 18) scale(1.15)">
 
-      <!-- RIGHT EAR -->
-      <path d="M680 125 C680 125 718 120 724 92 C730 66 718 48 706 52 C698 55 697 66 702 78 C707 90 708 102 704 112 C700 122 680 128 680 128 Z" fill="#0f766e"/>
-      <path d="M680 125 C680 125 710 119 715 96 C720 75 712 60 704 58 C700 57 699 64 703 75 C707 86 707 100 703 110 C699 120 680 126 680 126 Z" fill="#14b8a6" opacity="0.25"/>
+        <!-- LEFT EAR -->
+        <path d="M 100 130 C 98 112 86 96 70 80 C 54 64 36 50 32 32 C 28 14 40 4 52 8 C 64 12 68 26 70 42 C 72 58 76 72 86 88 C 94 100 98 116 100 130 Z" fill="url(#bodyG)"/>
+        <path d="M 100 130 C 98 112 86 96 70 80 C 54 64 36 50 32 32 C 28 14 40 4 52 8 C 64 12 68 26 70 42 C 72 58 76 72 86 88 C 94 100 98 116 100 130 Z" fill="url(#shadowG)"/>
+        <path d="M 100 126 C 98 112 88 98 74 84 C 60 70 46 58 44 42 C 42 28 50 20 58 22 C 66 24 70 36 72 50 C 74 64 78 76 88 90 C 95 100 98 114 100 126 Z" fill="#f9a8b8" opacity="0.85"/>
 
-      <!-- FACE -->
-      <ellipse cx="680" cy="178" rx="52" ry="52" fill="#0f766e"/>
-      <ellipse cx="680" cy="184" rx="32" ry="34" fill="#f0fdfa" opacity="0.9"/>
+        <!-- RIGHT EAR -->
+        <path d="M 100 130 C 102 112 114 96 130 80 C 146 64 164 50 168 32 C 172 14 160 4 148 8 C 136 12 132 26 130 42 C 128 58 124 72 114 88 C 106 100 102 116 100 130 Z" fill="url(#bodyG)"/>
+        <path d="M 100 126 C 102 112 112 98 126 84 C 140 70 154 58 156 42 C 158 28 150 20 142 22 C 134 24 130 36 128 50 C 126 64 122 76 112 90 C 105 100 102 114 100 126 Z" fill="#f9a8b8" opacity="0.85"/>
 
-      <!-- EYES -->
-      <g class="eye-blink" style="transform-origin: 664px 168px">
-        <circle cx="664" cy="168" r="11" fill="#1F2430"/>
-        <circle cx="664" cy="168" r="6.5" fill="#0d1520"/>
-        <circle cx="667" cy="164" r="3.5" fill="white"/>
-        <circle cx="662" cy="172" r="1.5" fill="white" opacity="0.6"/>
+        <!-- HEAD -->
+        <circle cx="100" cy="172" r="56" fill="url(#bodyG)"/>
+        <circle cx="100" cy="172" r="56" fill="url(#shadowG)"/>
+
+        <!-- EYES -->
+        <g class="eye-blink">
+          <ellipse cx="82"  cy="162" rx="7"  ry="9"  fill="#0d2b27"/>
+          <circle  cx="85"  cy="158" r="2.8" fill="white" opacity="0.8"/>
+        </g>
+        <g class="eye-blink">
+          <ellipse cx="118" cy="162" rx="7"  ry="9"  fill="#0d2b27"/>
+          <circle  cx="121" cy="158" r="2.8" fill="white" opacity="0.8"/>
+        </g>
+
+        <!-- CHEEKS -->
+        <ellipse cx="72"  cy="174" rx="10" ry="7" fill="#5eead4" opacity="0.3"/>
+        <ellipse cx="128" cy="174" rx="10" ry="7" fill="#5eead4" opacity="0.3"/>
+
+        <!-- MUZZLE -->
+        <ellipse cx="100" cy="192" rx="30" ry="22" fill="url(#muzzleG)"/>
+        <ellipse cx="100" cy="180" rx="24" ry="8"  fill="#0f766e" opacity="0.10"/>
+
+        <!-- NOSE -->
+        <ellipse cx="100" cy="184" rx="8" ry="5.5" fill="#f9a8b8"/>
+
+        <!-- MOUTH — smile -->
+        <path d="M 88 193 Q 100 205 112 193" stroke="#0d2b27" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+
       </g>
-      <g class="eye-blink" style="transform-origin: 696px 168px">
-        <circle cx="696" cy="168" r="11" fill="#1F2430"/>
-        <circle cx="696" cy="168" r="6.5" fill="#0d1520"/>
-        <circle cx="699" cy="164" r="3.5" fill="white"/>
-        <circle cx="694" cy="172" r="1.5" fill="white" opacity="0.6"/>
-      </g>
-
-      <!-- CHEEKS -->
-      <ellipse cx="652" cy="180" rx="9" ry="6" fill="#5eead4" opacity="0.35"/>
-      <ellipse cx="708" cy="180" rx="9" ry="6" fill="#5eead4" opacity="0.35"/>
-
-      <!-- SMILE -->
-      <path d="M 668 188 Q 680 198 692 188" stroke="#1F2430" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-      <!-- RIGHT ARM (static) -->
-      <path d="M 728 188 C 740 182 744 172 738 166 C 734 162 728 166 726 174 C 724 180 726 186 728 188 Z" fill="#0d9488"/>
-
-      <!-- FEET -->
-      <ellipse cx="662" cy="228" rx="14" ry="7" fill="#0d9488"/>
-      <ellipse cx="698" cy="228" rx="14" ry="7" fill="#0d9488"/>
-      <line x1="654" y1="227" x2="652" y2="233" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
-      <line x1="662" y1="228" x2="662" y2="234" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
-      <line x1="670" y1="227" x2="672" y2="233" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
-      <line x1="690" y1="227" x2="688" y2="233" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
-      <line x1="698" y1="228" x2="698" y2="234" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
-      <line x1="706" y1="227" x2="708" y2="233" stroke="#0a7a70" stroke-width="2" stroke-linecap="round"/>
     </g>
 
-    <!-- LEFT ARM (waves) -->
-    <g class="arm-left">
-      <path d="M 632 188 C 620 182 616 172 622 166 C 626 162 632 166 634 174 C 636 180 634 186 632 188 Z" fill="#0d9488"/>
-    </g>
-
-    <!-- COIN (pulses) -->
-    <g class="coin">
-      <circle cx="843" cy="82" r="22" fill="#F5C842"/>
-      <circle cx="843" cy="82" r="16" fill="#E8B830"/>
-      <circle cx="843" cy="82" r="11" fill="#F5C842"/>
-      <text x="843" y="87" text-anchor="middle" font-family="Arial" font-weight="900" font-size="13" fill="#C8980A">$</text>
+    <!-- COIN — pulses independently -->
+    <g class="coin-pulse">
+      <circle cx="810" cy="68" r="22" fill="#fbbf24"/>
+      <circle cx="810" cy="68" r="16" fill="#f59e0b"/>
+      <circle cx="810" cy="68" r="11" fill="#fbbf24"/>
+      <text x="810" y="73" text-anchor="middle" font-family="Arial" font-weight="900" font-size="13" fill="#92400e">$</text>
     </g>
 
   </g>
