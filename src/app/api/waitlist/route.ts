@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { waitlistConfirmationEmail } from "@/lib/emails/waitlist-confirmation";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // Simple in-memory rate limiter (resets on cold start — good enough for edge/serverless)
 const rateLimitMap = new Map<string, { count: number; ts: number }>();
 const RATE_LIMIT = 3;       // max submissions
@@ -35,6 +33,8 @@ const VALID_ROLES = ["consumer", "merchant", "developer", "partner"];
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   // Rate limiting
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   if (isRateLimited(ip)) {
