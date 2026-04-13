@@ -48,7 +48,7 @@ export function waitlistConfirmationEmail(firstName: string, role: string): stri
                 You're on the list, ${firstName}.
               </h1>
               <p style="margin:0 0 24px;font-size:15px;color:#6b7280;line-height:1.6;">
-                Thanks for joining the YunoClaw early access waitlist as a <strong style="color:#1F2430;">${roleLabel}</strong>. We'll reach out as soon as your spot is ready.
+                Thanks for joining the YunoClaw early access waitlist as a <strong style="color:#1F2430;">${roleLabel}</strong>. We're launching in <strong style="color:#0F766E;">October 2026</strong> — we'll reach out as soon as your spot is ready.
               </p>
 
               <!-- What to expect box -->

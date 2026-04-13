@@ -58,7 +58,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid body" }, { status: 400 });
   }
 
-  const { name, email, role, message } = body as Record<string, unknown>;
+  const { name, email, role, message, captchaToken } = body as Record<string, unknown>;
+
+  // Verify Turnstile token
+  if (!captchaToken || typeof captchaToken !== "string") {
+    return NextResponse.json({ error: "Missing CAPTCHA token" }, { status: 400 });
+  }
+  const turnstileRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      secret:   process.env.TURNSTILE_SECRET_KEY ?? "",
+      response: captchaToken,
+      remoteip: ip,
+    }),
+  });
+  const turnstileData = await turnstileRes.json() as { success: boolean };
+  if (!turnstileData.success) {
+    return NextResponse.json({ error: "CAPTCHA verification failed" }, { status: 403 });
+  }
 
   // Server-side validation with length limits
   if (typeof name !== "string" || !name.trim() || name.length > 100) {

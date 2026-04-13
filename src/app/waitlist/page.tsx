@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
+import { Countdown } from "@/components/waitlist/Countdown";
 
 export const metadata: Metadata = {
   title: "Get Early Access",
@@ -11,7 +12,7 @@ export default function WaitlistPage() {
     <main>
       <section className="gradient-hero text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl">
+          <div className="max-w-xl mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-teal-300 mb-4 block">Early Access</span>
             <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight mb-6">
               Get early access to YunoClaw
@@ -20,6 +21,7 @@ export default function WaitlistPage() {
               We're onboarding a small group of early users. Drop your details and we'll reach out when your spot is ready.
             </p>
           </div>
+          <Countdown />
         </div>
       </section>
 
