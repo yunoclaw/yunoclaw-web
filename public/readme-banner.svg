@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#083d38"/>
+      <stop offset="50%" style="stop-color:#0f766e"/>
+      <stop offset="100%" style="stop-color:#0d9488"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Soft glow for icon -->
+    <filter id="iconGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Clip path -->
+    <clipPath id="rounded">
+      <rect width="900" height="280" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#rounded)">
+    <!-- Background -->
+    <rect width="900" height="280" fill="url(#bg)"/>
+
+    <!-- Subtle grid lines -->
+    <g opacity="0.06" stroke="#ffffff" stroke-width="1">
+      <line x1="0" y1="56" x2="900" y2="56"/>
+      <line x1="0" y1="112" x2="900" y2="112"/>
+      <line x1="0" y1="168" x2="900" y2="168"/>
+      <line x1="0" y1="224" x2="900" y2="224"/>
+      <line x1="180" y1="0" x2="180" y2="280"/>
+      <line x1="360" y1="0" x2="360" y2="280"/>
+      <line x1="540" y1="0" x2="540" y2="280"/>
+      <line x1="720" y1="0" x2="720" y2="280"/>
+    </g>
+
+    <!-- Radial glow center -->
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#083d38;stop-opacity:0"/>
+    </radialGradient>
+    <ellipse cx="450" cy="140" rx="320" ry="160" fill="url(#centerGlow)"/>
+
+    <!-- Floating particles -->
+    <circle cx="80" cy="60" r="2" fill="#5eead4" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="60;50;60" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="820" cy="80" r="1.5" fill="#a7f3d0" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="80;68;80" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="200" r="1.5" fill="#5eead4" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="760" cy="210" r="2" fill="#a7f3d0" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="210;198;210" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="30" r="1.5" fill="#ffffff" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="240" r="1" fill="#5eead4" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="620" cy="250" r="1.5" fill="#a7f3d0" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Icon group — centered, animated float -->
+    <g filter="url(#iconGlow)">
+      <g transform="translate(450, 90)">
+        <animateTransform attributeName="transform" type="translate"
+          values="450,90; 450,84; 450,90" dur="4s" repeatCount="indefinite"/>
+
+        <!-- Scale icon to ~72px -->
+        <g transform="translate(-36, -36) scale(2.25)">
+          <!-- Left pincer -->
+          <path d="M16 22 C16 22 7 20 6 13 C5 7 9 4 12 5 C14 5.5 14.5 7 13.5 9 C12.5 11 12 13 13 15 C14 17 16 18 16 22 Z" fill="#ffffff"/>
+          <!-- Right pincer -->
+          <path d="M16 22 C16 22 25 20 26 13 C27 7 23 4 20 5 C18 5.5 17.5 7 18.5 9 C19.5 11 20 13 19 15 C18 17 16 18 16 22 Z" fill="#ffffff"/>
+          <!-- Base -->
+          <path d="M11 24 C11 21.8 13.2 20 16 20 C18.8 20 21 21.8 21 24 C21 26.2 18.8 28 16 28 C13.2 28 11 26.2 11 24 Z" fill="#5eead4"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Wordmark — centered -->
+    <text x="450" y="196"
+      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+      font-weight="800"
+      font-size="42"
+      fill="#ffffff"
+      text-anchor="middle"
+      letter-spacing="-1"
+      opacity="0">
+      YunoClaw
+      <animate attributeName="opacity" values="0;1" dur="0.8s" begin="0.3s" fill="freeze"/>
+    </text>
+
+    <!-- Tagline -->
+    <text x="450" y="228"
+      font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+      font-weight="400"
+      font-size="15"
+      fill="#5eead4"
+      text-anchor="middle"
+      letter-spacing="2"
+      opacity="0">
+      AGENTIC SHOPPING ASSISTANT
+      <animate attributeName="opacity" values="0;0.9" dur="0.8s" begin="0.7s" fill="freeze"/>
+    </text>
+
+    <!-- Bottom accent line -->
+    <rect x="350" y="248" width="0" height="2" rx="1" fill="#5eead4" opacity="0.6">
+      <animate attributeName="width" values="0;200" dur="1s" begin="1s" fill="freeze"/>
+      <animate attributeName="x" values="450;350" dur="1s" begin="1s" fill="freeze"/>
+    </rect>
+
+  </g>
+</svg>
