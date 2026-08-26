@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -43,6 +44,15 @@ const SECTIONS = [
 export default function TermsPage() {
   return (
     <main className="bg-sand-50 min-h-screen">
+      <WebPageJsonLd
+        title="Terms of Service"
+        description="Terms of Service for YunoClaw AI shopping assistant."
+        url="https://yunoclaw.tech/terms"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "Terms of Service", url: "https://yunoclaw.tech/terms" },
+        ]}
+      />
       <div className="gradient-hero text-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-300 mb-3 block">

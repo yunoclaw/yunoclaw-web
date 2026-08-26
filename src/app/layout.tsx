@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import {
+  OrganizationJsonLd,
+  WebSiteJsonLd,
+  SiteNavigationJsonLd,
+  SoftwareApplicationJsonLd,
+} from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yunoclaw.tech"),
@@ -50,6 +56,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+        <SiteNavigationJsonLd />
+        <SoftwareApplicationJsonLd />
+      </head>
       <body>
         <Navbar />
         {children}

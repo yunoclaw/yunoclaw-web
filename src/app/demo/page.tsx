@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DemoApp } from "@/components/demo/DemoApp";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Try the Demo",
@@ -9,6 +10,15 @@ export const metadata: Metadata = {
 export default function DemoPage() {
   return (
     <main className="min-h-screen bg-sand-50">
+      <WebPageJsonLd
+        title="Try the Demo"
+        description="Interactive demo of YunoClaw — enter a shopping intent, set your rules, and see ranked product recommendations with full explanations."
+        url="https://yunoclaw.tech/demo"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "Try the Demo", url: "https://yunoclaw.tech/demo" },
+        ]}
+      />
       <div className="gradient-hero text-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <span className="text-xs font-bold uppercase tracking-widest text-teal-300 mb-3 block">Interactive Demo</span>

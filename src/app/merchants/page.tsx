@@ -3,6 +3,7 @@ import Link from "next/link";
 import { TrendingUp, Code2, LayoutDashboard, Users, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent } from "@/components/ui/Card";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "For Merchants",
@@ -64,6 +65,15 @@ const INTEGRATION_STAGES = [
 export default function MerchantsPage() {
   return (
     <main>
+      <WebPageJsonLd
+        title="For Merchants"
+        description="Integrate YunoClaw into your ecommerce platform. Embedded assistant widget, white-label API, merchant dashboard, and partner program."
+        url="https://yunoclaw.tech/merchants"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "For Merchants", url: "https://yunoclaw.tech/merchants" },
+        ]}
+      />
       {/* Header */}
       <section className="gradient-hero text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

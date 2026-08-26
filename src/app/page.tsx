@@ -9,6 +9,7 @@ import { UseCases }          from "@/components/home/UseCases";
 import { Memory }            from "@/components/home/Memory";
 import { TrustSection }      from "@/components/home/TrustSection";
 import { FinalCTA }          from "@/components/home/FinalCTA";
+import { WebPageJsonLd }     from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "YunoClaw — AI Shopping Assistant That Works Under Your Rules",
@@ -19,6 +20,12 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
+      <WebPageJsonLd
+        title="YunoClaw — AI Shopping Assistant That Works Under Your Rules"
+        description="YunoClaw finds, evaluates, and ranks products under your exact constraints. Budget enforced. Approval required. Fewer tabs, better decisions."
+        url="https://yunoclaw.tech"
+        breadcrumbs={[{ name: "Home", url: "https://yunoclaw.tech" }]}
+      />
       <Hero />
       <WhatItDoes />
       <DemoPreview />

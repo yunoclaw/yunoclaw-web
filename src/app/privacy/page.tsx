@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -60,6 +61,15 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <main className="bg-sand-50 min-h-screen">
+      <WebPageJsonLd
+        title="Privacy Policy"
+        description="How YunoClaw collects, uses, and protects your personal information."
+        url="https://yunoclaw.tech/privacy"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "Privacy Policy", url: "https://yunoclaw.tech/privacy" },
+        ]}
+      />
       <div className="gradient-hero text-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">Privacy Policy</h1>

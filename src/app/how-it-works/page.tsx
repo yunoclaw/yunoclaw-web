@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MessageSquare, SlidersHorizontal, Database, Filter, BarChart3, FileText, CheckCircle, ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "How It Works",
@@ -62,6 +63,15 @@ const FLOW_STEPS = [
 export default function HowItWorksPage() {
   return (
     <main>
+      <WebPageJsonLd
+        title="How It Works"
+        description="See exactly how YunoClaw processes your shopping intent — from input to ranked results to merchant redirect. Transparent, step-by-step."
+        url="https://yunoclaw.tech/how-it-works"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "How It Works", url: "https://yunoclaw.tech/how-it-works" },
+        ]}
+      />
       {/* Header */}
       <section className="gradient-hero text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

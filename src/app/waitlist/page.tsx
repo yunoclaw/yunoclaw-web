@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { WaitlistForm } from "@/components/waitlist/WaitlistForm";
 import { Countdown } from "@/components/waitlist/Countdown";
+import { WebPageJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Get Early Access",
@@ -10,6 +11,15 @@ export const metadata: Metadata = {
 export default function WaitlistPage() {
   return (
     <main>
+      <WebPageJsonLd
+        title="Get Early Access"
+        description="Join the YunoClaw waitlist. Be among the first to try the AI shopping assistant that works under your rules."
+        url="https://yunoclaw.tech/waitlist"
+        breadcrumbs={[
+          { name: "Home", url: "https://yunoclaw.tech" },
+          { name: "Get Early Access", url: "https://yunoclaw.tech/waitlist" },
+        ]}
+      />
       <section className="gradient-hero text-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl mb-16">
